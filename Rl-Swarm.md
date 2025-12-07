@@ -34,7 +34,7 @@ wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloud
 2. Model name? → Введите `Gensyn/Qwen2.5-0.5B-Instruct` и нажмите Enter
 3. Prediction Market? → Введите `n` и нажмите Enter
 
-**Отключиться от screen** Нажмите `Ctrl+A` + `D`
+**Отключиться от screen**  `Ctrl+A` + `D`
 
 
 

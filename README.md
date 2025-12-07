@@ -50,7 +50,7 @@ sudo apt install -y python3 python3-venv python3-pip curl wget screen git lsof n
 
 **Verify installations:**
 ```bash
-python3 --version  # Should show Python 3.10 or higher
+python3 --version  
 git --version
 screen --version
 ```
@@ -70,7 +70,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-Your terminal prompt should now show `(.venv)` indicating the environment is active.
+The terminal command line should now display `(.venv)` 
 
 ---
 
@@ -305,7 +305,7 @@ gswarm
 - Chat ID: Paste your Chat ID from userinfobot  
 - EOA Address: Paste your EOA from dashboard
 
-**If you see error "No peer IDs found":**
+**If you see error "No peer IDs found"**
 - Wait 1-2 hours (node needs time to register on-chain)
 - Check logs: `grep "is already registered" ~/rl-swarm/logs/swarm_launcher.log`
 - If you see your Peer ID registered, try gswarm again
@@ -314,17 +314,17 @@ gswarm
 
 ### Step 7. Link Discord and Telegram
 
-**In Discord:**
+**In Discord**
 1. Go to Gensyn server, channel `#swarm-link`
 2. Type: `/link-telegram`
 3. Copy the verification code provided
 
-**In Telegram:**
+**In Telegram**
 1. Open your bot (the one you created)
 2. Send: `/verify YOUR_CODE_HERE`
 3. Wait for confirmation
 
-**Check Discord:**
+**Check Discord**
 - You should now have the "Gswarm" role
 - Check your profile or server member list
 

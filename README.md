@@ -40,7 +40,7 @@ Copy the generated URL, open it in your browser, and complete the login.
 
 ## Detailed Setup Guide
 
-### Step 1: Update System and Install Dependencies
+### Step 1. Update System and Install Dependencies
 ```bash
 sudo apt update && sudo apt upgrade -y
 ```
@@ -57,7 +57,7 @@ screen --version
 
 ---
 
-### Step 2: Clone RL-Swarm Repository
+### Step 2. Clone RL-Swarm Repository
 ```bash
 cd ~
 git clone https://github.com/gensyn-ai/rl-swarm.git
@@ -71,7 +71,7 @@ git log -1 --oneline
 
 ---
 
-### Step 3: Create Python Virtual Environment
+### Step 3. Create Python Virtual Environment
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
@@ -81,7 +81,7 @@ Your terminal prompt should now show `(.venv)` indicating the environment is act
 
 ---
 
-### Step 4: Configure Training Parameters
+### Step 4. Configure Training Parameters
 
 **Edit configuration to reduce RAM usage:**
 ```bash
@@ -99,14 +99,14 @@ Should show: `num_train_samples: 1`
 
 ---
 
-### Step 5: Launch the Node
+### Step 5. Launch the Node
 
 **Start in a screen session:**
 ```bash
 screen -S gensyn
 ```
 
-**Run the node:**
+**Run the node**
 ```bash
 ./run_rl_swarm.sh
 ```

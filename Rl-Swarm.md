@@ -36,9 +36,12 @@ wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloud
 
 ---
 
-## Подробный гайд
 
-### Шаг 1. установка пакетов и зависимостей
+
+## Пошаговый гайд
+
+
+### Шаг 1. Установка пакетов и зависимостей
 ```bash
 sudo apt update && sudo apt upgrade -y
 ```

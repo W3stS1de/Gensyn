@@ -76,12 +76,10 @@ The terminal command line should now display `(.venv)`
 
 ### Step 4: Configure Training Parameters
 
-**Edit configuration to reduce RAM usage:**
 ```bash
 sed -i -E 's/(num_train_samples:\s*)2/\1 1/' code_gen_exp/config/code-gen-swarm.yaml
 ```
 
-**Verify the change:**
 ```bash
 grep "num_train_samples" code_gen_exp/config/code-gen-swarm.yaml
 ```
@@ -109,11 +107,8 @@ screen -S gensyn
 - `Enter the name of the model` → `Gensyn/Qwen2.5-0.5B-Instruct`
 - `Prediction Market? [y/N]` → `n`
 
-**Wait for:**
+**wait for the next result**
 ```
-Building server
-Started server process: XXXXX
->> Failed to open http://localhost:3000. Please open it manually.
 >> Waiting for modal userData.json to be created...
 ```
 

@@ -1,6 +1,10 @@
 # Gensyn RL-Swarm Node - VPS Ubuntu
 
-> 🌍 **[English version](rl-swarm%20(EN).md)**
+<div align="center">
+
+**[🇬🇧 English](rl-swarm%20(EN).md)** | **[🇷🇺 Русский](rl-swarm%20(RU).md)**
+
+</div>
 
 ---
 

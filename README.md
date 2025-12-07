@@ -7,8 +7,6 @@
 - **RAM:** 16GB (32GB recommended)
 - **CPU:** 4 cores (8 cores recommended)
 - **Storage:** 50GB free space
-- **Network:** Stable connection with 100+ Mbit/s
-
 ---
 
 ## Quick Installation

@@ -3,7 +3,7 @@
 ## System Requirements
 
 ### Minimum Specifications
-- **OS:** Ubuntu 20.04 LTS or Ubuntu 22.04 LTS
+- **OS:** Ubuntu 22.04 LTS
 - **RAM:** 16GB (32GB recommended)
 - **CPU:** 4 cores (8 cores recommended)
 - **Storage:** 50GB free space

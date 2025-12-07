@@ -152,21 +152,15 @@ cloudflared --version
 cloudflared tunnel --url http://localhost:3000
 ```
 
-You will see output like:
-```
-Your quick Tunnel has been created! Visit it at:
-https://random-words-1234.trycloudflare.com
-```
+After this command, you will see a link in a dotted frame.
 
 **Copy this URL.**
 
-**Important:** Keep this terminal open while completing login!
-
----
+**Important:** Keep this terminal open while logging in.
 
 ### Alternative Tunnel Options
 
-**If cloudflared doesn't work, try:**
+**If cloudflared doesn't work, try**
 
 **Option A - localhost.run:**
 ```bash
@@ -189,32 +183,23 @@ ssh -R 80:localhost:3000 serveo.net
 5. Enter the code on the login page
 6. Click Submit
 
-**Wait for confirmation message in browser.**
-
 ---
 
-### Step 4: Verify Login Success
 
 **Check that files were created:**
 ```bash
 ls -la ~/rl-swarm/userData.json
 ls -la ~/rl-swarm/swarm.pem
 ```
+Important: Save these files somewhere safe on your PC
 
-**If both files exist, login was successful!**
 
-You can now close the tunnel terminal (Ctrl+C).
+
+After these steps, you can close the tunnel terminal (Ctrl+C)
 
 **Check node logs:**
 ```bash
 screen -r gensyn
-```
-
-You should see:
-```
-Connected to Gensyn Testnet
-Hello [node_name] [Peer_ID]
-Using Model: Gensyn/Qwen2.5-0.5B-Instruct
 ```
 
 **Detach:** `Ctrl+A, D`
@@ -270,8 +255,6 @@ gswarm --version
 3. Choose a username (must end in "bot", e.g., "mygensyn_bot")
 4. Copy and save the bot token provided
 
-**Example token:** `1234567890:ABCdefGHIjklMNOpqrsTUVwxyz`
-
 ---
 
 ### Step 4: Get Your Telegram Chat ID
@@ -281,9 +264,6 @@ gswarm --version
 1. Start a conversation
 2. Send `/start`
 3. Copy your Chat ID (numeric value)
-
-**Example ID:** `987654321`
-
 ---
 
 ### Step 5: Get Your EOA Address

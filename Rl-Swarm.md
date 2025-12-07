@@ -3,18 +3,22 @@
 ## Системные требования
 
 ### Минимальные требования
-- **ОС** Ubuntu 22.04 LTS
-- **RAM** 16GB (рекомендуется 32GB)
-- **CPU** 4 ядра (рекомендуется 8 ядер)
-- **SSD** 50GB свободного места
+- **ОС:** Ubuntu 22.04 LTS
+- **RAM:** 16GB (рекомендуется 32GB)
+- **CPU:** 4 ядра (рекомендуется 8 ядер)
+- **SSD:** 50GB свободного места
+
 ---
 
+## Аренда VPS сервера
 
-Аренда Сервера 
-Xorek cloud https://xorek.cloud/ru
-Space Core https://spacecore.pro/ru/
+Рекомендуемые провайдеры:
+- [Xorek Cloud](https://xorek.cloud/ru)
+- [Space Core](https://spacecore.pro/ru/)
 
-Фото с названием server.png 
+![Выбор сервера](images/server.png)
+
+---
 
 ## Быстрая установка (для опытных или ленивых)
 
@@ -37,18 +41,18 @@ wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloud
 ---
 
 **После окончания загрузки увидите следующее:**
+
 1. Push to Hugging Face Hub? → Введите `N` и нажмите Enter
 2. Model name? → Введите `Gensyn/Qwen2.5-0.5B-Instruct` и нажмите Enter
 3. Prediction Market? → Введите `n` и нажмите Enter
 
-**Отключиться от screen**  `Ctrl+A` + `D`
+**Отключиться от screen:** `Ctrl+A` + `D`
 
-
+---
 
 ## Пошаговый гайд
 
-
-### Шаг 1. Установка пакетов и зависимостей
+### Шаг 1: Установка пакетов и зависимостей
 ```bash
 sudo apt update && sudo apt upgrade -y
 ```
@@ -56,7 +60,7 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install -y python3 python3-venv python3-pip curl wget screen git lsof nano unzip build-essential gcc g++
 ```
 
-**Проверяем установку**
+**Проверяем установку:**
 ```bash
 python3 --version  
 git --version
@@ -65,7 +69,7 @@ screen --version
 
 ---
 
-### Шаг 2.Клонируем репозиторий
+### Шаг 2: Клонируем репозиторий
 ```bash
 cd ~
 git clone https://github.com/gensyn-ai/rl-swarm.git
@@ -74,13 +78,15 @@ cd rl-swarm
 
 ---
 
-### Шаг 3. Создаём виртуальное окружение
+### Шаг 3: Создаём виртуальное окружение
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-### Шаг 4. Настройка параметров обучения
+---
+
+### Шаг 4: Настройка параметров обучения
 ```bash
 sed -i -E 's/(num_train_samples:\s*)2/\1 1/' code_gen_exp/config/code-gen-swarm.yaml
 ```
@@ -88,90 +94,90 @@ sed -i -E 's/(num_train_samples:\s*)2/\1 1/' code_gen_exp/config/code-gen-swarm.
 grep "num_train_samples" code_gen_exp/config/code-gen-swarm.yaml
 ```
 
-
 **Почему это важно:** Использование `train_samples: 1` снижает использование RAM с 12-15GB до 8-10GB и значительно уменьшает вероятность падения ноды.
 
 ---
 
-### Шаг 5. Запуск ноды
+### Шаг 5: Запуск ноды
 
-**Запуск в screen сессии**
+**Запуск в screen сессии:**
 ```bash
 screen -S gensyn
 ```
 
-**Запуск ноды**
+**Запуск ноды:**
 ```bash
 ./run_rl_swarm.sh
 ```
 
-
 **Дождитесь следующего результата:**
 
-Фото с названием wait.png
+![Ожидание userData.json](images/wait.png)
 
-Важно . Не закравая первую SSH сессию, откройте новую 
-
+**Важно:** Не закрывая первую SSH сессию, откройте новую:
 ```bash
 ssh root@YOUR_VPS_IP
 ```
 
+---
 
+## Установка туннеля
 
-### Установка туннеля
+### Шаг 1: Установка Cloudflared
 
-
-**Установите cloudflared.**
+**Установите cloudflared:**
 ```bash
 wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
 sudo dpkg -i cloudflared-linux-amd64.deb
 ```
 
-**Проверяем установку. **
+**Проверяем установку:**
 ```bash
 cloudflared --version
 ```
 
 ---
 
-### Шаг 2. Создание туннеля
+### Шаг 2: Создание туннеля
 ```bash
 cloudflared tunnel --url http://localhost:3000
 ```
 
-После этой команды вы увидите ссылку в пунктирной рамке.
+После этой команды вы увидите ссылку в пунктирной рамке:
 
-фото с названием link.png
+![Ссылка туннеля](images/link.png)
+
+---
 
 ### Шаг 3: Завершение входа в браузере
 
 1. Откройте полученную ссылку в браузере
 2. Нажмите **"Sign in with Gmail"** (НЕ "Connect with Google")
 
-фото с названием email.png
+![Страница входа](images/email.png)
 
 3. Введите ваш email адрес
-4. Проверьте почту на которую должен прийти код подтвержения
+4. Проверьте почту, на которую должен прийти код подтверждения
 5. Введите код на странице входа
 6. Нажмите Submit
 
-После того как вы успешно залогинитесь , в первой сессии продолжится установка.
-фото с названием continue.png
+После того как вы успешно залогинитесь, в первой сессии продолжится установка:
 
-после успешной установки вам будут предложены вопросы
+![Продолжение установки](images/continue.png)
 
-**Ответы на запросы:**
+**После успешной установки вам будут предложены вопросы:**
+
 - `Would you like to push models to Hugging Face Hub? [y/N]` → `N`
 - `Enter the name of the model` → `Gensyn/Qwen2.5-0.5B-Instruct`
 - `Prediction Market? [y/N]` → `n`
 
+---
 
-### Альтернативные варианты туннеля
+## Альтернативные варианты туннеля
 
+### Вариант A - SSH локальный проброс портов
 
-**Вариант A - SSH локальный проброс портов**
-
-На вашем локальном пк
+На вашем локальном ПК:
 ```bash
 ssh -L 3000:localhost:3000 root@IP_ВАШЕГО_VPS
 ```
@@ -180,49 +186,53 @@ ssh -L 3000:localhost:3000 root@IP_ВАШЕГО_VPS
 
 Держите этот терминал открытым во время входа.
 
-**Вариант B - localhost.run**
+---
+
+### Вариант B - localhost.run
 ```bash
 ssh -o StrictHostKeyChecking=no -R 80:localhost:3000 nokey@localhost.run
 ```
 
-**Вариант C - serveo**
+---
+
+### Вариант C - serveo
 ```bash
 ssh -R 80:localhost:3000 serveo.net
 ```
 
-
-
 ---
+
+## Проверка успешной установки
 
 **Проверьте, что файлы созданы:**
 ```bash
 ls -la ~/rl-swarm/userData.json
 ls -la ~/rl-swarm/swarm.pem
 ```
-Важно: Сохраните эти файлы где-нибудь в безопасном месте на вашем ПК
+
+**Важно:** Сохраните эти файлы где-нибудь в безопасном месте на вашем ПК
 
 После этих шагов можно закрыть терминал с туннелем (Ctrl+C)
 
+---
 
 **Проверяем логи ноды:**
 ```bash
 screen -r gensyn
 ```
-фото с названием logs.png
 
-Позравляю , ты установил ноду 
+![Логи ноды](images/logs.png)
 
+**Поздравляю, вы установили ноду!**
 
-**Отключиться:** `Ctrl+A+D`
+**Отключиться:** `Ctrl+A` + `D`
 
 ---
-
-
-
 
 ## Получение Swarm роли Discord
 
 ### Предварительные требования
+
 - Нода работает непрерывно 24+ часа
 - Peer ID зарегистрирован в блокчейне
 - Один и тот же email используется для входа, дашборда и Discord
@@ -235,34 +245,34 @@ sudo rm -rf /usr/local/go
 curl -L https://go.dev/dl/go1.22.4.linux-amd64.tar.gz | sudo tar -xzf - -C /usr/local
 ```
 
-**Добавить в PATH**
+**Добавить в PATH:**
 ```bash
 echo 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin' >> $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
 
-**Проверяем установку**
+**Проверяем установку:**
 ```bash
 go version
 ```
 
 ---
 
-### Шаг 2. Установка gswarm
+### Шаг 2: Установка gswarm
 ```bash
 go install github.com/Deep-Commit/gswarm/cmd/gswarm@latest
 ```
 
-**Проверяем установку**
+**Проверяем установку:**
 ```bash
 gswarm --version
 ```
 
 ---
 
-### Шаг 3. Создаём Telegram бота
+### Шаг 3: Создаём Telegram бота
 
-**Откройте Telegram и найдите @BotFather:**
+**Откройте Telegram и найдите [@BotFather](https://t.me/BotFather):**
 
 1. Отправьте `/newbot`
 2. Выберите имя для бота (например, "My Gensyn Bot")
@@ -271,51 +281,65 @@ gswarm --version
 
 ---
 
-### Шаг 4. Получаем свой Telegram Chat ID
+### Шаг 4: Получаем свой Telegram Chat ID
 
-**Найдите @userinfobot в Telegram:**
+**Найдите [@userinfobot](https://t.me/userinfobot) в Telegram:**
 
 1. Начните разговор
 2. Отправьте `/start`
-3. Скопируйте ваш Chat ID 
+3. Скопируйте ваш Chat ID
+
 ---
 
-### Шаг 5. Получение вашего EOA адреса
+### Шаг 5: Получение вашего EOA адреса
 
-1. Перейдите на https://dashboard.gensyn.ai
+1. Перейдите на [Gensyn Dashboard](https://dashboard.gensyn.ai)
 2. Войдите с тем же email, который использовали для входа в ноду
 3. Скопируйте ваш EOA адрес (начинается с 0x...)
 
 ---
 
-### Шаг 6. Запуск gswarm
+### Шаг 6: Запуск gswarm
 ```bash
 gswarm
 ```
 
 **Введите при запросе:**
+
 - Bot Token: Вставьте токен вашего бота от BotFather
 - Chat ID: Вставьте ваш Chat ID от userinfobot  
 - EOA Address: Вставьте ваш EOA из дашборда
 
 **Если вы видите ошибку "No peer IDs found":**
+
 - Подождите 1-2 часа (ноде нужно время для регистрации в блокчейне)
 - Проверьте логи: `grep "is already registered" ~/rl-swarm/logs/swarm_launcher.log`
 - Если вы видите ваш Peer ID зарегистрированным, попробуйте gswarm снова
 
 ---
 
-### Шаг 7. Коннект Discord и Telegram
+### Шаг 7: Коннект Discord и Telegram
 
 **В Discord:**
+
 1. Перейдите на сервер Gensyn, канал `#swarm-link`
 2. Введите: `/link-telegram`
 3. Скопируйте предоставленный код подтверждения
 
 **В Telegram:**
+
 1. Откройте вашего бота (которого вы создали)
 2. Отправьте: `/verify ВАШ_КОД_ЗДЕСЬ`
 3. Дождитесь подтверждения
-Вуаля!
- У вас должна появиться роль Swarm
 
+**Вуаля! У вас должна появиться роль Swarm**
+
+---
+
+## Официальные ссылки
+
+- [Официальный сайт Gensyn](https://www.gensyn.ai)
+- [Dashboard](https://dashboard.gensyn.ai)
+- [GitHub](https://github.com/gensyn-ai/rl-swarm)
+- [Discord](https://discord.gg/gensyn)
+- [Документация](https://docs.gensyn.ai)

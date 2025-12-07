@@ -16,13 +16,6 @@
 sudo apt update && sudo apt install -y python3 python3-venv python3-pip curl wget screen git lsof build-essential gcc g++ && git clone https://github.com/gensyn-ai/rl-swarm.git && cd rl-swarm && python3 -m venv .venv && source .venv/bin/activate && sed -i -E 's/(num_train_samples:\s*)2/\1 1/' code_gen_exp/config/code-gen-swarm.yaml && screen -S gensyn && ./run_rl_swarm.sh
 ```
 
-**После окончания загрузки увидите следующее:**
-1. Push to Hugging Face? → Введите `N` и нажмите Enter
-2. Model name? → Введите `Gensyn/Qwen2.5-0.5B-Instruct` и нажмите Enter
-3. Prediction Market? → Введите `n` и нажмите Enter
-
-**Отключиться от screen** Нажмите `Ctrl+A`, затем `D`
-
 ---
 
 ### Настройка туннеля для логина
@@ -35,6 +28,13 @@ wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloud
 Скопируйте полученную ссылку, откройте её в браузере и завершите вход.
 
 ---
+
+**После окончания загрузки увидите следующее:**
+1. Push to Hugging Face Hub? → Введите `N` и нажмите Enter
+2. Model name? → Введите `Gensyn/Qwen2.5-0.5B-Instruct` и нажмите Enter
+3. Prediction Market? → Введите `n` и нажмите Enter
+
+**Отключиться от screen** Нажмите `Ctrl+A` + `D`
 
 
 
@@ -81,7 +81,6 @@ sed -i -E 's/(num_train_samples:\s*)2/\1 1/' code_gen_exp/config/code-gen-swarm.
 grep "num_train_samples" code_gen_exp/config/code-gen-swarm.yaml
 ```
 
-Должно показать: `num_train_samples: 1`
 
 **Почему это важно:** Использование `train_samples: 1` снижает использование RAM с 12-15GB до 8-10GB и значительно уменьшает вероятность падения ноды.
 
@@ -99,30 +98,22 @@ screen -S gensyn
 ./run_rl_swarm.sh
 ```
 
-**Ответы на запросы:**
-- `Would you like to push models to Hugging Face Hub? [y/N]` → `N`
-- `Enter the name of the model` → `Gensyn/Qwen2.5-0.5B-Instruct`
-- `Prediction Market? [y/N]` → `n`
 
 **Дождитесь следующего результата:**
 ```
 >> Waiting for modal userData.json to be created...
 ```
 
-**Отключиться от screen:** Нажмите `Ctrl+A`, затем `D`
+Важно . Не закравая первую SSH сессию, откройте новую 
 
-**Подключиться к сессии** `screen -r gensyn`
-
----
+```bash
+ssh root@YOUR_VPS_IP
+```
 
 
 
 ### Установка туннеля
 
-**Откройте новую SSH сессию**
-```bash
-ssh root@YOUR_VPS_IP
-```
 
 **Установите cloudflared.**
 ```bash
@@ -144,13 +135,24 @@ cloudflared tunnel --url http://localhost:3000
 
 После этой команды вы увидите ссылку в пунктирной рамке.
 
-**Скопируйте эту ссылку.**
+### Шаг 3: Завершение входа в браузере
 
-**Важно:** Держите эту сессию открытой во время входа.
+1. Откройте полученную ссылку в браузере
+2. Нажмите **"Sign in with Gmail"** (НЕ "Connect with Google")
 
-### Альтернативные варианты туннеля
+3. Введите ваш email адрес
+4. Проверьте почту на которую должен прийти код подтвержения
+5. Введите код на странице входа
+6. Нажмите Submit
 
-**Если cloudflared не работает, попробуйте:**
+После того как вы успешно залогинитесь , в первой сессии продолжится установка.
+после успешной установки вам будут предложены вопросы
+
+**Ответы на запросы:**
+- `Would you like to push models to Hugging Face Hub? [y/N]` → `N`
+- `Enter the name of the model` → `Gensyn/Qwen2.5-0.5B-Instruct`
+- `Prediction Market? [y/N]` → `n`
+
 
 ### Альтернативные варианты туннеля
 
@@ -176,14 +178,7 @@ ssh -o StrictHostKeyChecking=no -R 80:localhost:3000 nokey@localhost.run
 ssh -R 80:localhost:3000 serveo.net
 ```
 
-### Шаг 3: Завершение входа в браузере
 
-1. Откройте ссылку туннеля в браузере
-2. Нажмите **"Sign in with Gmail"** (НЕ "Connect with Google")
-3. Введите ваш email адрес
-4. Проверьте почту на которую должен прийти код подтвержения
-5. Введите код на странице входа
-6. Нажмите Submit
 
 ---
 
@@ -196,14 +191,18 @@ ls -la ~/rl-swarm/swarm.pem
 
 После этих шагов можно закрыть терминал с туннелем (Ctrl+C)
 
+
 **Проверка логов ноды:**
 ```bash
 screen -r gensyn
 ```
 
-**Отключиться:** `Ctrl+A, D`
+**Отключиться:** `Ctrl+A+D`
 
 ---
+
+
+
 
 ## Получение Swarm роли Discord
 
@@ -220,7 +219,7 @@ sudo rm -rf /usr/local/go
 curl -L https://go.dev/dl/go1.22.4.linux-amd64.tar.gz | sudo tar -xzf - -C /usr/local
 ```
 
-**Добавить в PATH:**
+**Добавить в PATH**
 ```bash
 echo 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin' >> $HOME/.bash_profile
 source $HOME/.bash_profile
@@ -245,7 +244,7 @@ gswarm --version
 
 ---
 
-### Шаг 3: Создание Telegram бота
+### Шаг 3. Создаём Telegram бота
 
 **Откройте Telegram и найдите @BotFather:**
 
@@ -256,7 +255,7 @@ gswarm --version
 
 ---
 
-### Шаг 4. Получение вашего Telegram Chat ID
+### Шаг 4. Получаем свой Telegram Chat ID
 
 **Найдите @userinfobot в Telegram:**
 

@@ -1,4 +1,4 @@
-# Gensyn RL-Swarm Node - VPS Ubuntu 
+# Gensyn RL-Swarm Node. VPS Ubuntu 
 
 ## System Requirements
 

@@ -18,13 +18,10 @@
 - **Network:** Stable connection, minimum 100 Mbps
 ---
 
-## VPS Server Providers
+## VPS rental
 
-Recommended providers:
 - [Xorek Cloud](https://xorek.cloud/ru)
 - [Space Core](https://spacecore.pro/ru/)
-
-![](Images/server.png)
 
 ---
 

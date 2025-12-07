@@ -132,7 +132,7 @@ Started server process: XXXXX
 
 ## Login Setup
 
-### Step 1: Install Cloudflared Tunnel
+### Step 1. Install Cloudflared Tunnel
 
 **Open a NEW SSH connection to your VPS:**
 ```bash
@@ -185,7 +185,7 @@ ssh -R 80:localhost:3000 serveo.net
 
 ---
 
-### Step 3: Complete Login in Browser
+### Step 3. Complete Login in Browser
 
 1. Open the tunnel URL in your web browser
 2. Click **"Sign in with Gmail"** (NOT "Connect with Google")
@@ -198,7 +198,7 @@ ssh -R 80:localhost:3000 serveo.net
 
 ---
 
-### Step 4: Verify Login Success
+### Step 4. Verify Login Success
 
 **Check that files were created:**
 ```bash
@@ -226,7 +226,7 @@ Using Model: Gensyn/Qwen2.5-0.5B-Instruct
 
 ---
 
-## Discord Role Setup
+## Discord Role 
 
 ### Prerequisites
 
@@ -236,7 +236,7 @@ Using Model: Gensyn/Qwen2.5-0.5B-Instruct
 
 ---
 
-### Step 1: Install Go
+### Step 1. Install Go
 ```bash
 sudo rm -rf /usr/local/go
 curl -L https://go.dev/dl/go1.22.4.linux-amd64.tar.gz | sudo tar -xzf - -C /usr/local
@@ -255,7 +255,7 @@ go version
 
 ---
 
-### Step 2: Install gswarm
+### Step 2. Install gswarm
 ```bash
 go install github.com/Deep-Commit/gswarm/cmd/gswarm@latest
 ```
@@ -267,7 +267,7 @@ gswarm --version
 
 ---
 
-### Step 3: Create Telegram Bot
+### Step 3. Create Telegram Bot
 
 **Open Telegram and find @BotFather:**
 
@@ -302,7 +302,7 @@ gswarm --version
 
 ---
 
-### Step 6: Run gswarm
+### Step 6. Run gswarm
 ```bash
 gswarm
 ```
@@ -319,7 +319,7 @@ gswarm
 
 ---
 
-### Step 7: Link Discord and Telegram
+### Step 7. Link Discord and Telegram
 
 **In Discord:**
 1. Go to Gensyn server, channel `#swarm-link`
@@ -338,6 +338,6 @@ gswarm
 ---
 
 
-Star this guide if it helped you!
+
 
 

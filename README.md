@@ -64,13 +64,6 @@ git clone https://github.com/gensyn-ai/rl-swarm.git
 cd rl-swarm
 ```
 
-**Check current version:**
-```bash
-git log -1 --oneline
-```
-
----
-
 ### Step 3. Create Python Virtual Environment
 ```bash
 python3 -m venv .venv
@@ -95,7 +88,7 @@ grep "num_train_samples" rgym_exp/config/rg-swarm.yaml
 
 Should show: `num_train_samples: 1`
 
-> **Why this matters:** Using `train_samples: 1` reduces RAM usage from 12-15GB to 8-10GB and significantly reduces crash probability.
+> **Why this matters** Using `train_samples: 1` reduces RAM usage from 12-15GB to 8-10GB and significantly reduces crash probability.
 
 ---
 

@@ -15,7 +15,7 @@
 
 ### One-Command Installation
 
-Copy and paste this single command to install everything:
+
 ```bash
 sudo apt update && sudo apt install -y python3 python3-venv python3-pip curl wget screen git lsof build-essential gcc g++ && git clone https://github.com/gensyn-ai/rl-swarm.git && cd rl-swarm && python3 -m venv .venv && source .venv/bin/activate && sed -i -E 's/(num_train_samples:\s*)2/\1 1/' rgym_exp/config/rg-swarm.yaml && screen -S gensyn && ./run_rl_swarm.sh
 ```

@@ -24,7 +24,7 @@
 - [Xorek Cloud](https://xorek.cloud/ru)
 - [Space Core](https://spacecore.pro/ru/)
 
-![](images/server.png)
+![](Images/server.png)
 
 ---
 
@@ -120,7 +120,7 @@ screen -S gensyn
 
 **Дождитесь следующего результата:**
 
-![](images/wait.png)
+![](Images/wait.png)
 
 **Важно:** Не закрывая первую SSH сессию, откройте новую:
 ```bash
@@ -153,7 +153,7 @@ cloudflared tunnel --url http://localhost:3000
 
 После этой команды вы увидите ссылку в пунктирной рамке:
 
-![](images/link.png)
+![](Images/link.png)
 
 ---
 
@@ -162,7 +162,7 @@ cloudflared tunnel --url http://localhost:3000
 1. Откройте полученную ссылку в браузере
 2. Нажмите **"Sign in with Gmail"** (НЕ "Connect with Google")
 
-![](images/email.png)
+![](Images/email.png)
 
 3. Введите ваш email адрес
 4. Проверьте почту, на которую должен прийти код подтверждения
@@ -171,7 +171,7 @@ cloudflared tunnel --url http://localhost:3000
 
 После того как вы успешно залогинитесь, в первой сессии продолжится установка:
 
-![](images/continue.png)
+![](Images/continue.png)
 
 **После успешной установки вам будут предложены вопросы:**
 
@@ -229,7 +229,7 @@ ls -la ~/rl-swarm/swarm.pem
 screen -r gensyn
 ```
 
-![](images/logs.png)
+![](Images/logs.png)
 
 **Поздравляю, вы установили ноду!**
 

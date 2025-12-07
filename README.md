@@ -38,7 +38,7 @@ Copy the generated URL, open it in your browser, and complete the login.
 
 ---
 
-## Detailed Setup Guide
+## step-by-step guide
 
 ### Step 1. Update System and Install Dependencies
 ```bash

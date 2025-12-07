@@ -27,7 +27,7 @@ sudo apt update && sudo apt install -y python3 python3-venv python3-pip curl wge
 
 ### Настройка туннеля для логина
 
-Откройте **НОВУЮ SSH сессию** к вашему VPS и выполните:
+Откройте **новую SSH сессию** и выполните:
 ```bash
 wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb && sudo dpkg -i cloudflared-linux-amd64.deb && cloudflared tunnel --url http://localhost:3000
 ```

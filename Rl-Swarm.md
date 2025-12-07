@@ -1,4 +1,4 @@
-# Gensyn RL-Swarm Node - VPS 
+# Gensyn RL-Swarm Node - VPS Ubuntu
 
 ## Системные требования
 
@@ -16,7 +16,7 @@
 - [Xorek Cloud](https://xorek.cloud/ru)
 - [Space Core](https://spacecore.pro/ru/)
 
-![Выбор сервера](images/server.png)
+![](images/server.png)
 
 ---
 
@@ -112,7 +112,7 @@ screen -S gensyn
 
 **Дождитесь следующего результата:**
 
-![Ожидание userData.json](images/wait.png)
+![](images/wait.png)
 
 **Важно:** Не закрывая первую SSH сессию, откройте новую:
 ```bash
@@ -145,7 +145,7 @@ cloudflared tunnel --url http://localhost:3000
 
 После этой команды вы увидите ссылку в пунктирной рамке:
 
-![Ссылка туннеля](images/link.png)
+![](images/link.png)
 
 ---
 
@@ -154,7 +154,7 @@ cloudflared tunnel --url http://localhost:3000
 1. Откройте полученную ссылку в браузере
 2. Нажмите **"Sign in with Gmail"** (НЕ "Connect with Google")
 
-![Страница входа](images/email.png)
+![](images/email.png)
 
 3. Введите ваш email адрес
 4. Проверьте почту, на которую должен прийти код подтверждения
@@ -163,7 +163,7 @@ cloudflared tunnel --url http://localhost:3000
 
 После того как вы успешно залогинитесь, в первой сессии продолжится установка:
 
-![Продолжение установки](images/continue.png)
+![](images/continue.png)
 
 **После успешной установки вам будут предложены вопросы:**
 
@@ -221,7 +221,7 @@ ls -la ~/rl-swarm/swarm.pem
 screen -r gensyn
 ```
 
-![Логи ноды](images/logs.png)
+![](images/logs.png)
 
 **Поздравляю, вы установили ноду!**
 

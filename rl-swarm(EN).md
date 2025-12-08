@@ -1,4 +1,4 @@
-# Gensyn RL-Swarm Node VPS 
+# Gensyn-RL-Swarm-VPS-Guide
 
 <div align="center">
 

@@ -2,7 +2,7 @@
 
 <div align="center">
 
-**[English](rl-swarm(EN).md)** | **[Русский](rl-swarm(RU).md)**
+**[English](rl-swarm-EN.md)** | **[Русский](rl-swarm-RU.md)**
 
 </div>
 
